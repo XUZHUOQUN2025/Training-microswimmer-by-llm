@@ -18,7 +18,7 @@ pip install retrying
 ## Select the swimmer to control
 
 ```bash
-swimmer = ThreeLink() # for purcell swimmer
+swimmer = ThreeLink() # for the purcell swimmer
 swimmer = ThreeSphere() # for NG's swimmer (line 803)
 ```
 
