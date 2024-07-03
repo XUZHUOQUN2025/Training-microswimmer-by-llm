@@ -19,20 +19,20 @@ pip install retrying
 
 ```bash
 swimmer = ThreeLink() # for purcell swimmer
-swimmer = ThreeSphere() # for NG's swimmer (line 845)
+swimmer = ThreeSphere() # for NG's swimmer (line 803)
 ```
 
 ## Change swimmer's moving direction (positive or negative)
 
 ```text
 When you want to change the moving direction (positive or negative):
-1. Change the first sentence of the prompt (see line 794).
-2. Modify the history-clear section (see lines 818-823).
+1. Change the first sentence of the prompt (see line 766).
+2. Modify the history-clear section (see lines 783-790).
 ```
 ## Change the number of historical demonstrations
 
 ```bash
-self.history_length = xxx # (line 694)
+self.history_length = xxx # (line 684)
 ```
 
 
