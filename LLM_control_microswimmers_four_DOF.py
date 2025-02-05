@@ -90,7 +90,7 @@ class FourLink:
         self.trajectory = []
         self.pos_diff_history = []
 
-    def observation_RK4(self, agent_action, dt_ratio):     #u--agent_action
+    def observation_RK4(self, agent_action, dt_ratio):     
         def rk4_step(y, u, dt_num, dydt_func):
             k1 = dt_num * dydt_func(y, u)
             k2 = dt_num * dydt_func(y + 0.5 * k1, u)
@@ -185,10 +185,6 @@ class FourLink:
         self.trajectory.append(total)
 
     def cal_velocity_center(slef, x, w):
-        # w : list of angular velocities at hinges
-        # x[0]: the absolute angles of the first link
-        # x[1:]: the angles at hinges
-        # length of each link is 1
 
         w = np.squeeze(w)
         x = np.squeeze(x)
@@ -279,10 +275,6 @@ class FourLink:
         AA = np.linalg.inv(A)
         velo = np.dot(AA, b)
 
-        # velo[0]: x velocity of the end of the first link
-        # velo[1]: y velocity of the end of the first link
-        # velo[2]: rotation velocity of the first link
-
         return velo
 
     def get_trajectory(self):
@@ -302,7 +294,7 @@ class FourLink:
 
     def get_history(self, agent_action_output, agent_action):
         self.prev_pos = self.pos
-        self.observation_RK4(agent_action, self.dt_ratio)               #动作[,] 固定值300
+        self.observation_RK4(agent_action, self.dt_ratio)               
         x_position = (self.xy_1[0] + 2 * self.xy_2[0] + 3 * self.xy_3[0] + 2 * self.xy_4[0] + self.xy_5[0]) / 9
         y_position = (self.xy_1[1] + 2 * self.xy_2[1] + 3 * self.xy_3[1] + 2 * self.xy_4[1] + self.xy_5[1]) / 9
         self.pos = np.array([x_position, y_position])
